@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://192.168.0.10:5432/finanzasDB
+    username: developer
+    password: DevOps#2026
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
