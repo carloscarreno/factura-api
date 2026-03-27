@@ -5,7 +5,8 @@ import com.igp.factura.service.FacturaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:5173")
@@ -30,5 +31,18 @@ public class FacturaController {
     @GetMapping("/{id}")
     public Factura obtener(@PathVariable Long id) {
         return facturaService.obtener(id);
+    }
+
+    @GetMapping("/todas")
+    public Page<Factura> listarPaginado(Pageable pageable) {
+        return facturaService.listarPaginado(pageable);
+    }
+
+    @GetMapping("/buscar")
+    public Page<Factura> buscarPorNombre(
+            @RequestParam String nombre,
+            Pageable pageable) {
+
+        return facturaService.buscarPorNombreCliente(nombre, pageable);
     }
 }
